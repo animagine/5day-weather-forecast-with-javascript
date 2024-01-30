@@ -24,9 +24,22 @@ fetch(getUrl)
     return response.json();
 })
 .then(function(data) {
+    
+   // current weather
+    var todayEl = $('#today');
+    todayEl.addClass('border border-primary');
+
     //create city name
     var cityNameEl = $('h2');
     cityNameEl.text(city);
     todayEl.append(cityNameEl);
+
+    // get date from results and append to city name element
+    var currentCityDate = data.current.dt;
+    currentCityDate = dayjs.unix(currentCityDate).format("D MMM YYYY, HH:mm:ss");
+    var currentDateEl = $('<span>');
+    currentDateEl.text(` (${currentCityDate}) `);
+    cityNameEl.append(currentDateEl);
+
 })
 }
