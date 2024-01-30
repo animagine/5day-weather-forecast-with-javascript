@@ -41,5 +41,11 @@ fetch(getUrl)
     currentDateEl.text(` (${currentCityDate}) `);
     cityNameEl.append(currentDateEl);
 
+    // get current temp data and display
+    var currentCityTemp = data.current.temp;
+    var currentTempEl = $('<p>')
+    currentTempEl.text(`Temp: ${currentCityTemp}°C`)
+    todayEl.append(currentTempEl);
+
 })
 }
